@@ -1,3 +1,4 @@
+/* General */
 body {
   font-family: 'Roboto', sans-serif;
   background-color: #FFFFFF;
@@ -8,6 +9,11 @@ body {
   text-align: center;
 }
 
+.mainSubSection {
+  margin-top: 20px;
+}
+
+/* Header */
 .header {
   text-align: center;
   background-color: #CC0000;
@@ -27,30 +33,49 @@ body {
   border-radius: 5px;
   box-shadow: 2px 2px lightgray;
   padding: 10px 0;
+  margin: 0 auto;
+  max-width: 80%;
 }
 
-.playerBackground {
-  background-color: rgba(0,127,8,0.3);
-}
-
-.enemyBackground {
-  background-color: rgba(204,0,0,0.3)
-}
-
+/* Robot Card Area */
 .robotChoicesArea {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
 
+/* Robot Card Styles */
 .robotCard {
   font-size: 12px;
   line-height: .9em;
   border: 1px solid gray;
+  transition: 0.5s;
+  position: relative;
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, .5), 0 6px 20px 0 rgba(0, 0, 0, .45);
+  margin: 0 auto;
 }
 
-.robotCard:hover {
-  background-color: green;
-  color: white;
+.robotCard:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  content: "";
+}
+
+.robotCard:hover,
+.robotCard:focus {
+  transform: scale3d(1.05, 1.05, 1);
+}
+
+.backgroundGreen {
+  background-color: rgba(8, 127, 0, 0.6);
+  color: #FFF;
+}
+
+.backgroundRed {
+  background-color: rgba(204, 0, 0, 0.6);
+  color: #FFF;
 }
 
 .card-title {
@@ -61,15 +86,13 @@ body {
 .robotCardImage {
   height: 100px;
   width: 100px;
+  border-bottom: 1px solid gray;
 }
 
+/* playerArea / enemyArea Styles */
 .robotTitle {
   font-size: 20px;
   font-weight: bolder;
-}
-
-.mainSubSection {
-  margin-top: 20px;
 }
 
 .fightImage {
@@ -83,6 +106,7 @@ body {
 .progressbar {
 }
 
+/* Footer */
 .footer {
   text-align: center;
   background-color: #CC0000;
@@ -91,12 +115,3 @@ body {
   position: sticky;
   margin-top: 100px;
 }
-
-/* Auto Resize images
-/*img {
-  display: block;
-  max-width:230px;
-  max-height:95px;
-  width: auto;
-  height: auto;
-}*/
