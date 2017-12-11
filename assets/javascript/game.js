@@ -148,12 +148,19 @@ $(document).ready(function() {
       // Update enemy healh bar
       if (enemyHealth <= 0) {
         $(".enemyProgress").attr("aria-valuenow", 0);
-        $(".enemyProgress").attr("style", `width: 100%; background-color: red`);
+        $(".enemyProgress").attr("style", "width: 100%; background-color: #CC0000");
         $(".enemyProgress").text("DEAD");
       } else {
         $(".enemyProgress").attr("aria-valuenow", `${enemyHealth}`);
-        $(".enemyProgress").attr("style", `width:${enemyHealthPerc}%`);
         $(".enemyProgress").text(enemyHealth);
+        // Conditional health colors
+        if (enemyHealthPerc <= 25) {
+          $(".enemyProgress").attr("style", `background-color: #CC0000; width:${enemyHealthPerc}%`);
+        } else if (enemyHealthPerc <= 50) {
+          $(".enemyProgress").attr("style", `background-color: #FFA719; width:${enemyHealthPerc}%`);
+        } else if (enemyHealthPerc <= 75) {
+          $(".enemyProgress").attr("style", `background-color: #DBC900; width:${enemyHealthPerc}%`);
+        }
       }
 
       // Call checkEnemyHealth() to see if enemy is dead
@@ -202,7 +209,7 @@ $(document).ready(function() {
     // Add clicked robot fightImage to playerArea
     $(".playerArea").append(`<img class="fightImage text-center" src="${playerRobot.fightImage}">`);
     // Add clicked robot name to playerArea
-    $(".playerArea").append(`<h4 class="playerName text-center">${playerRobot.name}</h4>`);
+    $(".playerArea").append(`<h4 class="robotName text-center">${playerRobot.name}</h4>`);
     // Add clicked robot health bar to playerArea
     $(".playerArea").append(
       `<div class="progress">
@@ -213,7 +220,7 @@ $(document).ready(function() {
 
     // Add a button with popover to playerArea
     $(".playerArea").append(
-      `<a id="playerStats" tabindex="0" class="btn btn-lg btn-primary" role="button" data-html="true" data-toggle="popover" data-trigger="focus" title="${playerRobot.name} Stats" data-content="${playerRobotStats}">${playerRobot.name} Stats</a>`
+      `<a id="playerStats" tabindex="0" class="btn btn-lg btn-primary" role="button" data-html="true" data-toggle="popover" data-trigger="focus" title="${playerRobot.name} Stats" data-content="${playerRobotStats}">Stats</a>`
     );
 
     // Enable popover
@@ -252,7 +259,7 @@ $(document).ready(function() {
     // Add clicked robot fightImage to enemyArea
     $(".enemyArea").append(`<img class="fightImage text-center" src="${enemyRobot.fightImage}">`);
     // Add clicked robot name to enemyArea
-    $(".enemyArea").append(`<h4 class="playerName text-center">${enemyRobot.name}</h4>`);
+    $(".enemyArea").append(`<h4 class="robotName text-center">${enemyRobot.name}</h4>`);
     // Add clicked robot health bar to enemyArea
     $(".enemyArea").append(
       `<div class="progress">
@@ -263,7 +270,7 @@ $(document).ready(function() {
 
     // Add a button with popover to enemyArea
     $(".enemyArea").append(
-      `<a id="enemyStats" tabindex="0" class="btn btn-lg btn-primary" role="button" data-html="true" data-toggle="popover" data-trigger="focus" title="${enemyRobot.name} Stats" data-content="${enemyRobotStats}">${enemyRobot.name} Stats</a>`
+      `<a id="enemyStats" tabindex="0" class="btn btn-lg btn-primary" role="button" data-html="true" data-toggle="popover" data-trigger="focus" title="${enemyRobot.name} Stats" data-content="${enemyRobotStats}">Stats</a>`
     );
 
     // Enable popover
@@ -280,7 +287,7 @@ $(document).ready(function() {
     // Show attack and reset buttons
     $(".gameBtn").show();
     // Print round number and message
-    $(".message").text("Click Robo-attack to attack.");
+    $(".message").text("Click Robo-Attack to attack.");
   }
 
   function checkEnemyHealth() {
@@ -300,12 +307,20 @@ $(document).ready(function() {
     // Update player health bar
     if (playerHealth <= 0) {
       $(".playerProgress").attr("aria-valuenow", 0);
-      $(".playerProgress").attr("style", `width: 100%; background-color: red`);
+      $(".playerProgress").attr("style", "width: 100%; background-color: #CC0000");
       $(".playerProgress").text("DEAD");
     } else {
       $(".playerProgress").attr("aria-valuenow", `${playerHealth}`);
-      $(".playerProgress").attr("style", `width:${playerHealthPerc}%`);
+      // $(".playerProgress").attr("style", `width:${playerHealthPerc}%`);
       $(".playerProgress").text(playerHealth);
+      // Conditional health colors
+      if (playerHealthPerc <= 25) {
+        $(".playerProgress").attr("style", `background-color: #CC0000; width:${playerHealthPerc}%`);
+      } else if (playerHealthPerc <= 50) {
+        $(".playerProgress").attr("style", `background-color: #FFA719; width:${playerHealthPerc}%`);
+      } else if (playerHealthPerc <= 75) {
+        $(".playerProgress").attr("style", `background-color: #DBC900; width:${playerHealthPerc}%`);
+      }
     }
 
     // Check player health

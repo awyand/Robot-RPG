@@ -1,15 +1,12 @@
 
 
 2) Fight Area Images: standardize height while keeping ratios
-3) Health Bar styles and conditionals
-4) Stylize Stats buttons
-5) Make robotCards/area better at smaller screens (col-6 col-md-4)
 6) General style adjustments
 
 
 font sizes:
  - header: 50px (3.125rem)
- - robotCard: 12px (0.75rem)
+ - robotCard, stats button: 12px (0.75rem)
  - robotCardTitle: 14px (0.875rem)
  - robotTitle: 20px (1.25rem)
  - body: 1rem (16px)
