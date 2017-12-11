@@ -67,9 +67,9 @@ $(document).ready(function() {
   }
 
   // Populate robotArray
-  addRobot("R2D2", "r2d2.jpg", "r2d2_fight.png", 100, 12, 5, "Industrial Automation", "32 BBY", "1.09m", "32kg", "Second Generation Robotic Droid Series-2 (R2D2)");
-  addRobot("Johnny 5", "johnny5.jpg", "johnny5_fight.png", 150, 6, 20, "NOVA Laboratory", "1986", "1.98m", "Unknown", "Strategic Artificial Intelligence Nuclear Transport (S.A.I.N.T) Prototype Number 5 (Johnny 5)");
-  addRobot("T-1000", "t-1000.jpg", "t-1000_fight.png", 120, 8, 10, "Skynet", "2029", "1.83m", "147kg", "Terminator 1000 Series (T-1000)");
+  addRobot("R2D2", "r2d2_square.jpg", "r2d2_fight.png", 100, 12, 5, "Industrial Automation", "32 BBY", "1.09m", "32kg", "Second Generation Robotic Droid Series-2 (R2D2)");
+  addRobot("Johnny 5", "johnny5_square.jpg", "johnny5_fight.png", 150, 6, 20, "NOVA Laboratory", "1986", "1.98m", "Unknown", "Strategic Artificial Intelligence Nuclear Transport (S.A.I.N.T) Prototype Number 5 (Johnny 5)");
+  addRobot("T-1000", "t-1000_square.jpg", "t-1000_fight.png", 120, 8, 10, "Skynet", "2029", "1.83m", "147kg", "Terminator 1000 Series (T-1000)");
   addRobot("HAL9000", "hal9000.png", "hal9000_fight.png", 180, 4, 25, "University of Illinois Coordinated Science Laboratory", "1997", "3.66m", "Unknown", "Heuristically Programmed Algorithmic Computer 9000 (HAL-9000)");
 
   // Update robotsRemaining with robotsArray.length
