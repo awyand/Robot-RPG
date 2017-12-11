@@ -3,16 +3,13 @@ $(document).ready(function() {
   // Welcome/instruction modal on page load
   $("#welcomeModal").modal("show");
 
+
   ////// GLOBAL VARIABLES //////
 
   // Initialize booleans that will be used for our event listener conditions
   var isPlayerChosen = false;
   var isCurrentlyFighting = false;
   var isGameOver = false;
-
-  // Initialize round variable
-  // Used for keeping track of rounds
-  var round = 1;
 
   // Initialize playerRobot and enemyRobot
   // Used to store robot objects throughout game
@@ -67,10 +64,10 @@ $(document).ready(function() {
   }
 
   // Populate robotArray
-  addRobot("R2D2", "r2d2_square.jpg", "r2d2_fight.png", 100, 12, 5, "Industrial Automation", "32 BBY", "1.09m", "32kg", "Second Generation Robotic Droid Series-2 (R2D2)");
-  addRobot("Johnny 5", "johnny5_square.jpg", "johnny5_fight.png", 150, 6, 20, "NOVA Laboratory", "1986", "1.98m", "Unknown", "Strategic Artificial Intelligence Nuclear Transport (S.A.I.N.T) Prototype Number 5 (Johnny 5)");
-  addRobot("T-1000", "t-1000_square.jpg", "t-1000_fight.png", 120, 8, 10, "Skynet", "2029", "1.83m", "147kg", "Terminator 1000 Series (T-1000)");
-  addRobot("HAL9000", "hal9000.png", "hal9000_fight.png", 180, 4, 25, "University of Illinois Coordinated Science Laboratory", "1997", "3.66m", "Unknown", "Heuristically Programmed Algorithmic Computer 9000 (HAL-9000)");
+  addRobot("R2D2", "r2d2.jpg", "r2d2_fight.jpg", 100, 12, 5, "Industrial Automation", "32 BBY", "1.09m", "32kg", "Second Generation Robotic Droid Series-2 (R2D2)");
+  addRobot("Johnny 5", "johnny5.jpg", "johnny5_fight.jpg", 150, 6, 20, "NOVA Laboratory", "1986", "1.98m", "Unknown", "Strategic Artificial Intelligence Nuclear Transport (S.A.I.N.T) Prototype Number 5 (Johnny 5)");
+  addRobot("T-1000", "t-1000.jpg", "t-1000_fight.jpg", 120, 8, 10, "Skynet", "2029", "1.83m", "147kg", "Terminator 1000 Series (T-1000)");
+  addRobot("HAL9000", "hal9000.png", "hal9000_fight.jpg", 180, 4, 25, "University of Illinois Coordinated Science Laboratory", "1997", "3.66m", "Unknown", "Heuristically Programmed Algorithmic Computer 9000 (HAL-9000)");
 
   // Update robotsRemaining with robotsArray.length
   robotsRemaining = robotArray.length;
@@ -92,6 +89,8 @@ $(document).ready(function() {
        </div>`
     );
   });
+
+
 
   // Hide certain buttons and messages until user picks robots to fight
   $(".gameBtn").hide();
@@ -177,6 +176,25 @@ $(document).ready(function() {
 
 
   ////// FUNCTIONS //////
+
+  // function reset() {
+  //   isPlayerChosen = false;
+  //   isCurrentlyFighting = false;
+  //   isGameOver = false;
+  //   playerRobot = {};
+  //   enemyRobot = {};
+  //   playerAttack = 0;
+  //   basePlayerAttack = 0;
+  //   playerHealth = 0;
+  //   playerStartingHealth = 0;
+  //   enemyStartingHealth = 0;
+  //   playerHealthPerc = 0;
+  //   enemyHealthPerc = 0;
+  //   robotsRemaining = 0;
+  //   robotArray = [];
+  //
+  //   populateRobots();
+  // }
 
   // addPlayer() function
   function addPlayer(robot) {
@@ -286,7 +304,7 @@ $(document).ready(function() {
     isCurrentlyFighting = true;
     // Show attack and reset buttons
     $(".gameBtn").show();
-    // Print round number and message
+    // Print message
     $(".message").text("Click Robo-Attack to attack.");
   }
 
@@ -373,4 +391,5 @@ $(document).ready(function() {
     isCurrentlyFighting = false;
     isGameOver = true;
   }
+
 });
