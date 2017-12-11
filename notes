@@ -1,13 +1,9 @@
-Robots / Arenas
- - R2D2 (Death Star)
- - Johnny 5 (Astoria, Oregon)
- - HAL9000 (Spaceship Discovery One)
- - T-1000 (LA)
-
  To Do:
   - Health bar conditionals/styles
   - Robot info (info button???)
-  - Arenas (background image?)
-  - Better effects for hovers
-  - Intro/instructions screen
   - Clean up styles, especially the robotCards
+
+
+  Style Clean Up
+   - Fight Image area - standard height while keeping ratios
+   - Robot Cards: stacking at smaller screen sizes

@@ -13,6 +13,13 @@ body {
   margin-top: 20px;
 }
 
+/* Modal */
+
+.modal-header {
+  background-color: #CC0000;
+  color: #FFF;
+}
+
 /* Header */
 .header {
   text-align: center;
@@ -103,9 +110,6 @@ body {
   display: block;
 }
 
-.progressbar {
-}
-
 /* Footer */
 .footer {
   text-align: center;
@@ -114,4 +118,15 @@ body {
   padding: 40px 0;
   position: sticky;
   margin-top: 100px;
+}
+
+.footerLink {
+  text-decoration: none;
+  color: #FFF;
+  font-weight: bolder;
+}
+
+.footerLink:hover {
+  text-decoration: underline;
+  color: #FFF;
 }
