@@ -359,7 +359,7 @@ $(document).ready(function() {
   // Win game function
   function winGame() {
     // Print appropriate message to user
-    $(".message").text(`${playerRobot.name} attacked ${enemyRobot.name} for ${playerAttack} points and killed him. No enemies remain. YOU WIN! Click reset to play again.`);
+    $(".message").text(`${playerRobot.name} attacked ${enemyRobot.name} for ${playerAttack} points and killed him. No enemies remain. YOU WIN! Click Robo-Reset to play again.`);
     // Set isCurrentlyFighting to false
     isCurrentlyFighting = false;
     isGameOver = true;
@@ -368,7 +368,7 @@ $(document).ready(function() {
   // Lose function
   function lose() {
     // Print appropriate message to user
-    $(".message").text(`${playerRobot.name} attacked ${enemyRobot.name} for ${playerAttack} points. ${enemyRobot.name} counter-attacked for ${enemyRobot.counterAttackPower} points and killed ${playerRobot.name}. GAME OVER. Click reset to play again.`);
+    $(".message").text(`${playerRobot.name} attacked ${enemyRobot.name} for ${playerAttack} points. ${enemyRobot.name} counter-attacked for ${enemyRobot.counterAttackPower} points and killed ${playerRobot.name}. GAME OVER. Click Robo-Reset to play again.`);
     // Set isCurrentlyFighting to false
     isCurrentlyFighting = false;
     isGameOver = true;
