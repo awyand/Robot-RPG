@@ -121,10 +121,14 @@ body {
   max-height: calc(width * 1.5);
   display: block;
   margin: 0 auto;
+  border-radius: 3px;
+  box-shadow: 3px 3px lightgray;
 }
 
 .robotName {
   font-size: 1.25rem;
+  font-weight: bold;
+  margin-top: 8px;
 }
 
 #playerStats,
@@ -190,6 +194,6 @@ body {
   }
 
   .fightImage {
-    max-width: 25%;
+    max-width: 30%;
   }
 }
