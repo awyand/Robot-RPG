@@ -30,7 +30,7 @@ body {
 }
 
 .header h1 {
-  font-size: 50px;
+  font-size: 3.125rem;
   font-weight: bolder;
   letter-spacing: 2px;
 }
@@ -52,8 +52,8 @@ body {
 
 /* Robot Card Styles */
 .robotCard {
-  font-size: 12px;
-  line-height: .9em;
+  font-size: 0.75rem;
+  line-height: 0.5rem;
   border: 1px solid gray;
   transition: 0.5s;
   position: relative;
@@ -75,6 +75,22 @@ body {
   transform: scale3d(1.05, 1.05, 1);
 }
 
+.robotCardTitle {
+  font-weight: bolder;
+  font-size: 0.875rem;
+}
+
+.robotCardImage {
+  height: 100px;
+  width: 100px;
+  border-bottom: 1px solid gray;
+}
+
+.robotCardTitle {
+  margin-bottom: 20px;
+}
+
+/* Robot Card conditional backgrounds */
 .backgroundGreen {
   background-color: rgba(8, 127, 0, 0.6);
   color: #FFF;
@@ -85,20 +101,9 @@ body {
   color: #FFF;
 }
 
-.card-title {
-  font-weight: bolder;
-  font-size: 14px;
-}
-
-.robotCardImage {
-  height: 100px;
-  width: 100px;
-  border-bottom: 1px solid gray;
-}
-
-/* playerArea / enemyArea Styles */
+/* Player / Enemy Area Styles */
 .robotTitle {
-  font-size: 20px;
+  font-size: 1.25rem;
   font-weight: bolder;
 }
 

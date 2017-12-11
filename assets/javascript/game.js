@@ -1,8 +1,7 @@
 $(document).ready(function() {
 
   // Welcome/instruction modal on page load
-    $("#welcomeModal").modal("show");
-
+  $("#welcomeModal").modal("show");
 
   ////// GLOBAL VARIABLES //////
 
@@ -69,11 +68,9 @@ $(document).ready(function() {
 
   // Populate robotArray
   addRobot("R2D2", "r2d2.jpg", "r2d2_fight.png", 100, 12, 5, "Industrial Automation", "32 BBY", "1.09m", "32kg", "Second Generation Robotic Droid Series-2 (R2D2)");
-  addRobot("Johnny 5", "johnny5.jpg", "johnny5_fight.png", 150, 6, 20, "NOVA Laboratory", "1986", "1.98m", "Unknown", "Strategic Artificially Intelligence Nuclear Transport (S.A.I.N.T) Prototype Number 5 (Johnny 5)");
+  addRobot("Johnny 5", "johnny5.jpg", "johnny5_fight.png", 150, 6, 20, "NOVA Laboratory", "1986", "1.98m", "Unknown", "Strategic Artificial Intelligence Nuclear Transport (S.A.I.N.T) Prototype Number 5 (Johnny 5)");
   addRobot("T-1000", "t-1000.jpg", "t-1000_fight.png", 120, 8, 10, "Skynet", "2029", "1.83m", "147kg", "Terminator 1000 Series (T-1000)");
-  addRobot("HAL9000", "hal9000.png", "hal9000_fight.png", 180, 4, 25, "University of Illinois Coordinated Science Laboratory", "1997", "3.66m", "Unknown", "Heuristically Programmed Algorithmic Computer 9000");
-
-  console.log(robotArray);
+  addRobot("HAL9000", "hal9000.png", "hal9000_fight.png", 180, 4, 25, "University of Illinois Coordinated Science Laboratory", "1997", "3.66m", "Unknown", "Heuristically Programmed Algorithmic Computer 9000 (HAL-9000)");
 
   // Update robotsRemaining with robotsArray.length
   robotsRemaining = robotArray.length;
@@ -86,8 +83,8 @@ $(document).ready(function() {
     $(".robotChoicesArea").append(
       `<div class="card robotCard" index="${index}">
          <img src="${currentRobot.profileImage}" class="card-img-top robotCardImage">
-         <div class="card-body">
-           <p class="card-title">${currentRobot.name}</h4>
+         <div class="card-body robotCardBody">
+           <p class="card-title robotCardTitle">${currentRobot.name}</p>
            <p>HP: <span class="playerHealth">${currentRobot.healthPoints}</span></p>
            <p>AP: <span class="attackPower">${currentRobot.attackPower}</span></p>
            <p>CAP: <span class="counterAttackPower">${currentRobot.counterAttackPower}</span></p>
@@ -193,6 +190,15 @@ $(document).ready(function() {
     basePlayerAttack = playerRobot.attackPower;
     playerAttack = basePlayerAttack;
 
+    // Save robot stats to a variable to add to popover
+    var playerRobotStats = `
+        <p><strong>Full Name:</strong> ${playerRobot.fullName}</p>
+        <p><strong>Manufacturer:</strong> ${playerRobot.manufacturer}</p>
+        <p><strong>Build Year:</strong> ${playerRobot.buildYear}</p>
+        <p><strong>Height:</strong> ${playerRobot.height}</p>
+        <p><strong>Weight:</strong> ${playerRobot.weight}</p>
+    `;
+
     // Add clicked robot fightImage to playerArea
     $(".playerArea").append(`<img class="fightImage text-center" src="${playerRobot.fightImage}">`);
     // Add clicked robot name to playerArea
@@ -205,6 +211,14 @@ $(document).ready(function() {
       </div>
       </div>`);
 
+    // Add a button with popover to playerArea
+    $(".playerArea").append(
+      `<a id="playerStats" tabindex="0" class="btn btn-lg btn-primary" role="button" data-html="true" data-toggle="popover" data-trigger="focus" title="${playerRobot.name} Stats" data-content="${playerRobotStats}">${playerRobot.name} Stats</a>`
+    );
+
+    // Enable popover
+    $("#playerStats").popover();
+
     // Set isPlayerChosen to true so that the next card clicked goes to enemyArea
     isPlayerChosen = true;
 
@@ -214,8 +228,8 @@ $(document).ready(function() {
 
   // addEnemy() function
   function addEnemy(robot) {
-    // Empty enemyArea
-    $(".enemyArea").empty();
+    // Remove enemyArea elements except .robotTitle
+    $(".enemyArea").find("*").not(".robotTitle").remove();
     // Remove card from enemyGrid
     $(robot).remove();
     // Update robotsRemaining
@@ -225,6 +239,16 @@ $(document).ready(function() {
     // Save enemyStartingHealth and enemyHealth
     enemyStartingHealth = enemyRobot.healthPoints;
     enemyHealth = enemyRobot.healthPoints;
+
+    // Save robot stats to a variable to add to popover
+    var enemyRobotStats = `
+        <p><strong>Full Name:</strong> ${enemyRobot.fullName}</p>
+        <p><strong>Manufacturer:</strong> ${enemyRobot.manufacturer}</p>
+        <p><strong>Build Year:</strong> ${enemyRobot.buildYear}</p>
+        <p><strong>Height:</strong> ${enemyRobot.height}</p>
+        <p><strong>Weight:</strong> ${enemyRobot.weight}</p>
+    `;
+
     // Add clicked robot fightImage to enemyArea
     $(".enemyArea").append(`<img class="fightImage text-center" src="${enemyRobot.fightImage}">`);
     // Add clicked robot name to enemyArea
@@ -236,6 +260,15 @@ $(document).ready(function() {
       ${enemyRobot.healthPoints}
       </div>
       </div>`);
+
+    // Add a button with popover to enemyArea
+    $(".enemyArea").append(
+      `<a id="enemyStats" tabindex="0" class="btn btn-lg btn-primary" role="button" data-html="true" data-toggle="popover" data-trigger="focus" title="${enemyRobot.name} Stats" data-content="${enemyRobotStats}">${enemyRobot.name} Stats</a>`
+    );
+
+    // Enable popover
+    $("#enemyStats").popover();
+
     // Call startFight() function
     startFight();
   }
@@ -285,7 +318,7 @@ $(document).ready(function() {
       lose();
     } else {
       // No one died, print appropriate message
-      $(".message").text(`${playerRobot.name} attacked ${enemyRobot.name} for ${playerAttack} points. ${enemyRobot.name} counter-attacked for ${enemyRobot.counterAttackPower} points. Keep attacking!`);
+      $(".message").text(`${playerRobot.name} attacked ${enemyRobot.name} for ${playerAttack} points. ${enemyRobot.name} counter-attacked for ${enemyRobot.counterAttackPower} points.`);
       // Increase playerAttack
       playerAttack += basePlayerAttack;
     }
