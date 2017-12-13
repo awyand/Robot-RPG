@@ -2,9 +2,6 @@
 body {
   font-family: 'Roboto', sans-serif;
   background-color: #FFFFFF;
-  /*background-image: url("../images/deathstar.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;*/
 }
 
 .container {
@@ -19,7 +16,6 @@ body {
 }
 
 /* Modal */
-
 .modal-header {
   background-color: #CC0000;
   color: #FFF;
@@ -41,7 +37,6 @@ body {
 }
 
 /* Message */
-
 .message {
   border: 1px solid #CC0000;
   border-radius: 5px;
@@ -110,7 +105,6 @@ body {
 }
 
 /* Player / Enemy Area Styles */
-
 .robotTitle {
   font-size: 1.25rem;
   font-weight: bold;
@@ -186,8 +180,6 @@ body {
 }
 
 /* Media Queries */
-
-/* When columns collapse, add margin-top */
 @media screen and (max-width: 768px) {
   .enemyArea {
     margin-top: 20px;

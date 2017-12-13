@@ -21,14 +21,10 @@ $(document).ready(function() {
   var playerAttack;
   var basePlayerAttack;
 
-  // Initialize player and enemy health
-  // Used for tracking health
+  // Initialize player and enemy health, starting health, and percentages
+  // Used for tracking health and updating health bars
   var playerHealth;
   var enemyHealth;
-
-  // Initialize player and enemy starting health
-  // Initialize player and enemy health percentages
-  // Used for updating health bars
   var playerStartingHealth;
   var enemyStartingHealth;
   var playerHealthPerc;
@@ -72,6 +68,7 @@ $(document).ready(function() {
   // Update robotsRemaining with robotsArray.length
   robotsRemaining = robotArray.length;
 
+  // Add robot cards to HTML based on robotArray
   // For every Robot in robotArray
   $.each(robotArray, function(index) {
     // Set a variable to reference which robot the each() function is on
@@ -90,8 +87,6 @@ $(document).ready(function() {
     );
   });
 
-
-
   // Hide certain buttons and messages until user picks robots to fight
   $(".gameBtn").hide();
   $(".healthArea").hide();
@@ -107,7 +102,7 @@ $(document).ready(function() {
       addPlayer(this);
     } else {
       // Otherwise the user has already chosen their player and is now choosing the enemy
-      // Only do things to enemy card if isCurrentlyFighting = false
+      // Only do things to enemy card if isCurrentlyFighting is false
       if (!isCurrentlyFighting) {
         // Run addEnemy() function and pass this as a paramter
         addEnemy(this);
@@ -137,10 +132,10 @@ $(document).ready(function() {
 
   // Listen for user to click attackBtn
   $(".attackBtn").on("click", function() {
-    // Only run combat logic if isCurrentlyFighting is true
+    // Only run combat logic if isCurrentlyFighting is true and isGameOver is false
     if (isCurrentlyFighting && !isGameOver) {
 
-      // Subtract player attackPower from enemyHealth
+      // Subtract player attackPower from enemyHealth and update enemyHealthPerc
       enemyHealth -= playerAttack;
       enemyHealthPerc = (enemyHealth / enemyStartingHealth) * 100;
 
@@ -177,25 +172,6 @@ $(document).ready(function() {
 
   ////// FUNCTIONS //////
 
-  // function reset() {
-  //   isPlayerChosen = false;
-  //   isCurrentlyFighting = false;
-  //   isGameOver = false;
-  //   playerRobot = {};
-  //   enemyRobot = {};
-  //   playerAttack = 0;
-  //   basePlayerAttack = 0;
-  //   playerHealth = 0;
-  //   playerStartingHealth = 0;
-  //   enemyStartingHealth = 0;
-  //   playerHealthPerc = 0;
-  //   enemyHealthPerc = 0;
-  //   robotsRemaining = 0;
-  //   robotArray = [];
-  //
-  //   populateRobots();
-  // }
-
   // addPlayer() function
   function addPlayer(robot) {
     // Remove card from playerArea
@@ -211,7 +187,7 @@ $(document).ready(function() {
     playerStartingHealth = playerRobot.healthPoints;
     playerHealth = playerStartingHealth;
 
-    // Save playerAttack
+    // Save playerAttack and basePlayerAttack
     basePlayerAttack = playerRobot.attackPower;
     playerAttack = basePlayerAttack;
 

@@ -1,0 +1,61 @@
+Event Listeners
+===============
+1) Robot Card is clicked
+2) Robot Card is hovered
+3) Attack Button is clicked
+4) Reset Button is clicked
+
+
+Function Summaries
+==================
+addPlayer(robot)
+ - Called when user clicks a robot card with appropriate conditions
+ - Accepts a target robot card HTML element from robot card click listener
+ - Removes target from HTML
+ - Looks up the corresponding robot object based on index in HTML element
+ - Saves a number of health, attack, and other variables according to the robot object
+ - Updates playerArea in HTML with corresponding elements
+ - Saves boolean to indicate a player has been chosen
+ - Tells user to choose an enemy
+
+
+addEnemy(robot)
+ - Same as addPlayer, just for enemy
+ - Calls startFight function
+
+startFight()
+ - Called when user chooses an enemy
+ - Saves boolean to indicate player and enemy have been chosen and user is in a fight
+ - Reveals fight buttons (attack and reset)
+ - Tells user to attack enemy
+
+checkEnemyHealth()
+ - Called when user clicks attack button with appropriate conditions
+ - Attack button click updates enemy health and HTML based on variables
+ - If enemy is dead, calls winRound function
+ - If enemy isn't dead, calls enemyCounterAttack function
+
+enemyCounterAttack()
+ - Called by checkEnemyHealth with appropriate conditions
+ - Updates player health and HTML based on variables
+ - Calls checkPlayerHealth function
+
+checkPlayerHealth()
+ - Called by enemyCounterAttack
+ - If player is dead, calls lose function
+ - If player is not dead, updates message and increase player attack
+
+winRound()
+ - Called by checkEnemyHealth with appropriate conditions
+ - If no enemies remain, calls winGame function
+ - If enemies remain, updates message and increase player attack
+ - Sets booleans appropriately so user can choose another enemy
+
+winGame()
+ - Called by winRound with appropriate conditions
+ - Updates message
+ - Sets booleans appropriately so clicking buttons doesn't continue fight logic
+
+lose()
+ - Updates message
+ - Sets booleans appropriately so clicking buttons doesn't continue fight logic
